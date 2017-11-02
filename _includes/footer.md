@@ -9,4 +9,4 @@ it is in the [public domain][license].
 [18F]: https://18f.gsa.gov
 [open source]: https://github.com/18F/federalist-landing-page-template
 [license]: https://github.com/18F/federalist-landing-page-template/blob/master/LICENSE
-[Suggest an edit]: https://github.com/{{ site.org_name }}/{{ site.repo_name }}/edit/_includes/report.md
+[Suggest an edit]: https://github.com/{{ site.org_name }}/{{ site.repo_name }}/edit/{{ site.branch}}/_includes/report.md
