@@ -19,6 +19,12 @@ baseurl: ''
 # the base hostname & protocol for your site
 url: ''
 
+# Replace "18f" with your org name
+org_name: 18F
+
+# Replace "federalist-modern-team-template" with your repo name 
+repo_name: federalist-landing-page-template
+
 twitter_username: 18F
 github_username:  18F
 
