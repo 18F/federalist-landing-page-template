@@ -22,7 +22,7 @@ url: ''
 # Replace "18f" with your org name
 org_name: 18F
 
-# Replace "federalist-modern-team-template" with your repo name 
+# Replace "federalist-modern-team-template" with your repo name
 repo_name: federalist-landing-page-template
 
 twitter_username: 18F
@@ -30,6 +30,19 @@ github_username:  18F
 
 # scripts to load on all pages
 scripts: []
+
+
+# Pop-Up —— appears once every 60mins on the site.
+# Options:
+popup: preview                       #pop-up displayed across Federalist previews
+popup: work-in-progress              #pop-up displayed across all branches
+popup_copy: 'This site is currently in development by the Technology Transformation Service at the General Services Administration.'
+
+# popup: password                    #(soft) pass wall displayed across all branches
+# popup_pass: 'be-the-change'        # Password for when "popup: password" is used
+                                     # THIS IS NOT A MEANS OF SECURING INFORMATION
+
+
 
 # Build settings
 markdown: kramdown
