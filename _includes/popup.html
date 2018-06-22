@@ -1,0 +1,98 @@
+
+<!-- Popup = {{ site.popup }} -->
+{{ if site.popup == "in-progress" }}
+<div class="popup-frame">
+  <div class="paper">
+    <div class="popup">
+      <p>{{ site.popup_copy }}</p>
+      <button type="button" name="button">Got it</button>
+    </div>
+  </div>
+</div>
+{{ endif }}
+
+
+<!-- Pop-up CSS ======================================= -->
+<style media="screen">
+.popup-frame {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  background: rgba(17, 17, 17, 0.85);
+}
+
+.popup-frame .close {
+  color: #fff;
+  text-align: center;
+  display: block;
+}
+.popup-frame .paper {
+  padding: 50px 70px 65px 70px;
+  background: #009AFA;
+  width: 50%;
+  position: absolute;
+  left: 25%;
+  top: 15%;
+}
+.popup-frame .paper .popup {
+  font-size: 3rem;
+  color: #fff;
+}
+.popup-frame .paper .popup p {
+  margin: 0 0 1.5rem 0;
+}
+.popup-frame .paper .popup button {
+  margin: 0;
+  font-size: 2.6rem;
+}
+</style>
+
+
+
+<!-- jQuery =======================================-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.slim.js"
+  integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
+  crossorigin="anonymous"></script>
+
+<!-- Popup JS =======================================-->
+<script type="text/javascript">
+
+  // Sets the Cookie — invalidates after an hour
+  function setCookie(key, value) {
+    var expires = new Date();
+    expires.setTime(expires.getTime() + (60 * (60 * 1000)) );
+    document.cookie = key + '=' + value + ';expires=' + expires.toUTCString() + "; path=/";
+  }
+
+  // Gets the Cookie
+  function getCookie(key) {
+    var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+    return keyValue ? keyValue[2] : null;
+  }
+
+  (function($){
+    jQuery(document).ready(function() {
+
+      // Checks to see if there is a cookie
+      if (getCookie('in_progress') == 'true') {
+        // YES! there is, so let's hide the popup
+        $(".popup-frame").hide();
+      } else {
+        // No cookie here! Let's show the popup and set another cookie
+        setCookie('in_progress','true');
+        $(".popup-frame").show();
+      }
+
+      // Let's make it easy to clear this popup away
+      // Click anywhere on the page
+      $( ".popup" ).click(function() {
+        $(".popup-frame").hide();
+      });
+
+    });
+  })(jQuery);
+
+</script>
