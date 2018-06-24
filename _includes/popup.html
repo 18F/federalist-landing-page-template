@@ -5,6 +5,9 @@
   <div class="paper">
     <div class="popup">
       <p>{{ site.popup_copy }}</p>
+      {{ if site.popup == 'password' }}
+        <input id="pass" type="password" name="" value="">
+      {{ endif }}
       <button type="button" name="button">Got it</button>
     </div>
   </div>
@@ -47,6 +50,13 @@
   margin: 0;
   font-size: 2.6rem;
 }
+
+.popup-frame .paper .popup input#pass{
+  margin-bottom: .5em;
+  border: none;
+  font-size: 5rem;
+  padding: 0 .3em;
+}
 </style>
 
 
@@ -88,9 +98,36 @@
 
       // Let's make it easy to clear this popup away
       // Click anywhere on the page
-      $( ".popup" ).click(function() {
-        $(".popup-frame").hide();
-      });
+      var popup_type = "{{ site.popup }}";
+      if (popup_type == 'preview') {
+        {% unless site.env == "production" %}
+          $( ".popup" ).click(function() {
+            $(".popup-frame").hide();
+          });
+        {% endunless %}
+      }
+
+      if (popup_type == 'work-in-progress') {
+        $( ".popup" ).click(function() {
+          $(".popup-frame").hide();
+        });
+      }
+
+      if (popup_type == 'password') {
+        var pass = $('.popup #pass');
+        var btn = $('.popup button');
+        $(pass).keyup(function() {
+          $(btn).prop("disabled",true);
+          var val = $(this).val();
+          if (val == '{{ site.popup_pass }}') {
+            $(btn).prop("disabled",false);
+            $( ".popup" ).click(function() {
+              $(".popup-frame").hide();
+            });
+          }
+        });
+        $(".popup-frame").show();
+      }
 
     });
   })(jQuery);
