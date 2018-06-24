@@ -9,18 +9,7 @@
 
     {% include scripts.html %}
 
-    <!-- Checks to see if popup is set to "work-in-progress"
-    Applies the popup to all branches of the site -->
-    {{ if site.popup == "work-in-progress" }}
-      {% include popup.html %}
-    {{ endif }}
-    <!-- Checks to see if popup is set to "preview"
-    Applies the popup to ONLY preview branches in Federalist -->
-    {{ if site.popup == "preview" }}
-      {% unless site.env == "production" %}
-        {% include popup.html %}
-      {% endunless %}
-    {{ endif }}
+    {% include popup.html %}
 
   </body>
 
