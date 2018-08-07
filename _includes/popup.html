@@ -5,7 +5,7 @@
     <div class="popup">
       <p>{{ site.popup_copy }}</p>
       {{ if site.popup == 'password' }}
-        <input id="pass" type="password" name="" value="">
+        <input id="pass" type="password" name="" value="" placeholder="password">
       {{ endif }}
       <button type="button" name="button">Got it</button>
     </div>
@@ -48,12 +48,32 @@
   margin: 0;
   font-size: 2.6rem;
 }
+.popup-frame .paper .popup button:disabled {
+  background-color: #4A5460;
+}
 
 .popup-frame .paper .popup input#pass{
-  margin-bottom: .5em;
+  margin: .8em 0;
   border: none;
-  font-size: 5rem;
-  padding: 0 .3em;
+  font-size: 4rem;
+  padding: 0.15em .3em;
+  border: 5px #004874 solid;
+}
+.popup-frame .paper .popup input#pass.valid{
+  border: 5px #008531 solid;
+}
+
+.popup-frame .paper .popup input#pass::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #777;
+}
+.popup-frame .paper .popup input#pass::-moz-placeholder { /* Firefox 19+ */
+  color: #777;
+}
+.popup-frame .paper .popup input#pass:-ms-input-placeholder { /* IE 10+ */
+  color: #777;
+}
+.popup-frame .paper .popup input#pass:-moz-placeholder { /* Firefox 18- */
+  color: #777;
 }
 </style>
 
@@ -111,14 +131,16 @@
         });
       }
 
+      // Let's do a little checking against the password that is set
       if (popup_type == 'password') {
         var pass = $('.popup #pass');
         var btn = $('.popup button');
+        $(btn).prop("disabled",true);
         $(pass).keyup(function() {
-          $(btn).prop("disabled",true);
           var val = $(this).val();
           if (val == '{{ site.popup_pass }}') {
             $(btn).prop("disabled",false);
+            $(pass).addClass("valid");
             $( ".popup" ).click(function() {
               $(".popup-frame").hide();
             });
