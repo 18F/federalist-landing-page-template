@@ -97,7 +97,7 @@
       // Let's make it easy to clear this popup away
       // Click anywhere on the page
       var popup_type = "{{ site.popup }}";
-      if (popup_type == 'preview') {
+      if (popup_type == 'previews-only') {
         {% unless site.env == "production" %}
           $( ".popup" ).click(function() {
             $(".popup-frame").hide();
@@ -105,7 +105,7 @@
         {% endunless %}
       }
 
-      if (popup_type == 'work-in-progress') {
+      if (popup_type == 'all-branches') {
         $( ".popup" ).click(function() {
           $(".popup-frame").hide();
         });
