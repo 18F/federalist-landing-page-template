@@ -105,12 +105,12 @@
     jQuery(document).ready(function() {
 
       // Checks to see if there is a cookie
-      if (getCookie('in_progress') == 'true') {
+      if (getCookie('work_in_progress') == 'true') {
         // YES! there is, so let's hide the popup
         $(".popup-frame").hide();
       } else {
         // No cookie here! Let's show the popup and set another cookie
-        setCookie('in_progress','true');
+        setCookie('work_in_progress','true');
         $(".popup-frame").show();
       }
 
@@ -135,12 +135,18 @@
       if (popup_type == 'password') {
         var pass = $('.popup #pass');
         var btn = $('.popup button');
+        // disable the button
         $(btn).prop("disabled",true);
+        // On keyup, check to see if the password entered == the password in the config
         $(pass).keyup(function() {
           var val = $(this).val();
+          // If the passwords are equal...
           if (val == '{{ site.popup_pass }}') {
+            // re-enable the button
             $(btn).prop("disabled",false);
+            // add this class to the input field
             $(pass).addClass("valid");
+            // And if someone clicks the frame, make the popup go away.
             $( ".popup" ).click(function() {
               $(".popup-frame").hide();
             });
