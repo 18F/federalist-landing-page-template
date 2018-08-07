@@ -150,10 +150,14 @@
             $( ".popup" ).click(function() {
               $(".popup-frame").hide();
             });
+          } else {
+            // disable the button
+            $(btn).prop("disabled",true);
+            // remove the valid class
+            $(pass).removeClass("valid");
           }
         });
       }
-
     });
   })(jQuery);
 
