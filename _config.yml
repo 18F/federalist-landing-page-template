@@ -39,7 +39,7 @@ scripts: []
 popup_copy: 'This site is currently in development by the Technology Transformation Service at the General Services Administration.'
 
 popup: password                        # (soft) pass wall displayed across all branches
-popup_pass: 'be-the-change'            # Password for when "popup: password" is used
+popup_pass: 'freedom'                  # Password for when "popup: password" is used
                                        # THIS IS NOT A MEANS OF SECURING INFORMATION
 
 
