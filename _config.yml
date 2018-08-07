@@ -34,8 +34,8 @@ scripts: []
 
 # Pop-Up —— appears once every 60mins on the site.
 # Options:
-popup: previews-only                 # pop-up displayed across Federalist previews
-# popup: all-branches                  # pop-up displayed across all branches
+# popup: previews-only                 # pop-up displayed across Federalist previews
+popup: all-branches                  # pop-up displayed across all branches
 popup_copy: 'This site is currently in development by the Technology Transformation Service at the General Services Administration.'
 
 # popup: password                        # (soft) pass wall displayed across all branches
