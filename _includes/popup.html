@@ -4,10 +4,7 @@
   <div class="paper">
     <div class="popup">
       <p>{{ site.popup_copy }}</p>
-      {{ if site.popup == 'password' }}
-        <input id="pass" type="password" name="" value="" placeholder="password">
-      {{ endif }}
-      <button type="button" name="button">Got it</button>
+      <button type="button" name="button">Ok</button>
     </div>
   </div>
 </div>
@@ -25,42 +22,46 @@
 }
 
 .popup-frame .close {
-  color: #fff;
+  color: #004874;
   text-align: center;
   display: block;
 }
 .popup-frame .paper {
-  padding: 50px 70px 65px 70px;
+  padding: 30px 30px 35px 30px;
   background: #009AFA;
-  width: 50%;
+  background: #fff;
+  width: 40%;
   position: absolute;
-  left: 25%;
+  left: 30%;
   top: 15%;
+  border: 5px #004874 solid;
 }
 .popup-frame .paper .popup {
-  font-size: 3rem;
-  color: #fff;
+  font-size: 2.3rem;
+  color: #004874;
 }
 .popup-frame .paper .popup p {
   margin: 0 0 1.5rem 0;
 }
 .popup-frame .paper .popup button {
   margin: 0;
-  font-size: 2.6rem;
+  font-size: 1.8rem;
 }
 .popup-frame .paper .popup button:disabled {
-  background-color: #4A5460;
+  background-color: #878f98;
 }
-
+.popup-frame .paper .popup label{
+  font-size: .8em;
+}
 .popup-frame .paper .popup input#pass{
-  margin: .8em 0;
+  margin: .35em 0;
   border: none;
-  font-size: 4rem;
+  font-size: 2.5rem;
   padding: 0.15em .3em;
-  border: 5px #004874 solid;
+  border: 2px #004874 solid;
 }
 .popup-frame .paper .popup input#pass.valid{
-  border: 5px #008531 solid;
+  border: 2px #008531 solid;
 }
 
 .popup-frame .paper .popup input#pass::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -131,33 +132,6 @@
         });
       }
 
-      // Let's do a little checking against the password that is set
-      if (popup_type == 'password') {
-        var pass = $('.popup #pass');
-        var btn = $('.popup button');
-        // disable the button
-        $(btn).prop("disabled",true);
-        // On keyup, check to see if the password entered == the password in the config
-        $(pass).keyup(function() {
-          var val = $(this).val();
-          // If the passwords are equal...
-          if (val == '{{ site.popup_pass }}') {
-            // re-enable the button
-            $(btn).prop("disabled",false);
-            // add this class to the input field
-            $(pass).addClass("valid");
-            // And if someone clicks the frame, make the popup go away.
-            $( ".popup" ).click(function() {
-              $(".popup-frame").hide();
-            });
-          } else {
-            // disable the button
-            $(btn).prop("disabled",true);
-            // remove the valid class
-            $(pass).removeClass("valid");
-          }
-        });
-      }
     });
   })(jQuery);
 
